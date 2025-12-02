@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>IoT Dashboard</title>
+  <link rel="stylesheet" href="dashboard.css" />
+  <!-- 🔹 Razorpay Script -->
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+</head>
+<body>
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <h2>⚡ IoT Dashboard</h2>
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Graphs</a></li>
+      <li><a href="#deviceControl">Device Control</a></li>
+      <li><a href="#" id="logoutBtn">Logout</a></li>
+    </ul>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <header>
+      <h1>Welcome, <span id="username">User</span></h1>
+    </header>
+
+    <!-- Data Cards -->
+    <section class="cards">
+      <div class="card"><h3>Live Energy Usage</h3><p id="liveEnergy">0 kWh</p></div>
+      <div class="card"><h3>Voltage</h3><p id="voltage">0 V</p></div>
+      <div class="card"><h3>Current</h3><p id="current">0 A</p></div>
+      <div class="card"><h3>Power</h3><p id="power">0 W</p></div>
+      <div class="card"><h3>Predictive Bill</h3><p id="predictedBill">₹0.00</p></div>
+      <div class="card"><h3>Tamper Alerts</h3><p id="tamperAlerts">None</p></div>
+      <div class="card"><h3>Available Balance</h3><p id="balanceBox">₹100</p></div>
+      <div class="card"><h3>Monthly Allocated Energy</h3><p id="monthlyUsage">0 kWh</p></div>
+      <div class="card"><h3>Total Energy Used</h3><p id="totalUsed">0 kWh</p></div>
+      <div class="card"><h3>Remaining Energy</h3><p id="remainingEnergy">0 kWh</p></div>
+    </section>
+
+    <!-- Monthly Allocation Control -->
+    <section class="monthly-control">
+      <h2>Monthly Energy Allocation</h2>
+      
+      <div class="monthly-box">
+        <label for="monthlyInput">Add Amount (₹):</label>
+        <input type="number" id="monthlyInput" placeholder="Enter amount" min="0" />
+        <span id="monthlyPreview" style="color: green; font-weight: bold;"></span>
+        <button id="setMonthlyBtn">Add Amount</button>
+      </div>
+
+      <div class="monthly-kwh-box" style="margin-top:10px;">
+        <label for="monthlyKwhInput">Allocate Energy This Month (₹):</label>
+        <input type="number" id="monthlyKwhInput" placeholder="Enter amount in ₹" min="0" />
+        <span id="monthlyKwhPreview" style="color: green; font-weight: bold;"></span>
+        <button id="allocateKwhBtn">Allocate Energy</button>
+        <button id="resetMonthlyBtn" class="reset-btn">Reset Monthly Allocation</button>
+      </div>
+    </section>
+
+    <!-- System Status & Control -->
+    <section class="system-control-section" id="deviceControl">
+      <div class="system-status-box">
+        <h2>System Status</h2>
+        <p id="powerStatus">Power: ON ⚡</p>
+        <p id="faultStatus">Fault: None ✅</p>
+        <p id="theftStatus">Theft Detection: OFF ❌</p>
+        <p id="totalEnergy">Total Energy: 0 kWh</p>
+      </div>
+
+      <div class="device-control-box">
+        <h2>Controller & Recharge</h2>
+        <div class="controller-box">
+          <p>Power Control:</p>
+          <button id="powerOnBtn">Power ON</button>
+          <button id="powerOffBtn">Power OFF</button>
+        </div>
+        <div class="recharge-box">
+          <label for="rechargeAmount">Quick Recharge Amount (₹):</label>
+          <input type="number" id="rechargeAmount" placeholder="Enter amount" min="0" />
+          <div class="recharge-buttons">
+            <!-- 🔹 This will trigger Razorpay -->
+            <button id="rechargeBtn">Recharge Now 💳</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="switch-section">
+      <h2>Relay Control</h2>
+      <div class="switch-box">
+        <label class="switch">
+          <input type="checkbox" id="relaySwitch1">
+          <span class="slider"></span>
+        </label>
+        <p id="relayStatus1">Relay 1: OFF ❌</p>
+      </div>
+      <div class="switch-box">
+        <label class="switch">
+          <input type="checkbox" id="relaySwitch2">
+          <span class="slider"></span>
+        </label>
+        <p id="relayStatus2">Relay 2: OFF ❌</p>
+      </div>
+    </section>
+
+    <section class="alert-section">
+      <h2>System Alerts</h2>
+      <p id="alertMessage" style="color: red; font-weight: bold;">No Alerts 🚀</p>
+    </section>
+
+    <section class="chart-section">
+      <h2>Live Energy Chart</h2>
+      <div class="chart-container">
+        <canvas id="energyChart"></canvas>
+      </div>
+    </section>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="dashboard.js"></script>
+</body>
+</html>
