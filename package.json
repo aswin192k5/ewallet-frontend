@@ -12,5 +12,17 @@
   "description": "",
   "devDependencies": {
     "live-server": "^1.2.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aswin192k5/ewallet-frontend.git"
+  },
+  "bugs": {
+    "url": "https://github.com/aswin192k5/ewallet-frontend/issues"
+  },
+  "homepage": "https://github.com/aswin192k5/ewallet-frontend#readme",
+  "dependencies": {
+    "node-fetch": "^3.3.2",
+    "ws": "^8.18.3"
   }
 }

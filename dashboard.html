@@ -5,9 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>IoT Dashboard</title>
   <link rel="stylesheet" href="dashboard.css" />
-  <!-- 🔹 Razorpay Script -->
+
+  <!-- Razorpay -->
   <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+  <!-- Web3 for Blockchain -->
+  <script src="https://cdn.jsdelivr.net/npm/web3/dist/web3.min.js"></script>
+
+  <!-- Blockchain Module (must load before dashboard.js so dashboard can call Blockchain) -->
+  <script src="blockchain.js" defer></script>
+  <!-- Dashboard logic -->
+  <script src="dashboard.js" defer></script>
 </head>
+
 <body>
   <!-- Sidebar -->
   <div class="sidebar">
@@ -22,9 +32,24 @@
 
   <!-- Main Content -->
   <div class="main-content">
+
+    <!-- Header -->
     <header>
       <h1>Welcome, <span id="username">User</span></h1>
+
+      <!-- 🔥 BLOCKCHAIN UI ADDED HERE -->
+      <div class="bc-ui">
+        <span id="bcStatus" class="bc-status bc-off">🔴 Not Connected</span>
+        <button id="connectWalletBtn" class="bc-btn">Connect Wallet</button>
+        <button id="syncBcBtn" class="bc-btn">Sync Blockchain</button>
+        <button id="readBcBtn" class="bc-btn">Read On-Chain</button>
+      </div>
     </header>
+
+    <!-- small place to show MAC (script expects this) -->
+    <p id="macAddress" style="font-size:0.9rem; color:#666; margin-left:16px;"></p>
+<p id="espStatus">ESP Status: 🔴 Offline</p>
+
 
     <!-- Data Cards -->
     <section class="cards">
@@ -81,7 +106,6 @@
           <label for="rechargeAmount">Quick Recharge Amount (₹):</label>
           <input type="number" id="rechargeAmount" placeholder="Enter amount" min="0" />
           <div class="recharge-buttons">
-            <!-- 🔹 This will trigger Razorpay -->
             <button id="rechargeBtn">Recharge Now 💳</button>
           </div>
         </div>
@@ -119,7 +143,8 @@
     </section>
   </div>
 
+  <!-- Chart.js -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="dashboard.js"></script>
+
 </body>
 </html>
