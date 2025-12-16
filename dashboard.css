@@ -498,3 +498,126 @@ header h1 {
   .main-content { padding: 20px; }
   .cards { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
 }
+/* Blockchain UI */
+.bc-ui {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-right: 20px;
+}
+
+.bc-btn {
+  padding: 8px 14px;
+  background: #22376b;
+  color: #fff;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.bc-btn:hover {
+  background: #1a2c55;
+}
+
+.bc-status {
+  font-size: 14px;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-weight: bold;
+}
+
+.bc-off {
+  background: #ffdddd;
+  color: #bb0000;
+}
+
+.bc-on {
+  background: #ddffdd;
+  color: #008800;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+/* ============================================
+   🔥 BLOCKCHAIN UI (Wallet + Sync Panel)
+   ============================================ */
+
+.bc-ui {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+}
+
+.bc-btn {
+  padding: 8px 14px;
+  background: #1e3a8a;        /* deep blue */
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+  font-weight: 600;
+}
+
+.bc-btn:hover {
+  background: #172b63;
+  transform: translateY(-2px);
+}
+
+/* Blockchain Status Badge */
+.bc-status {
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: bold;
+  border: 1px solid #ddd;
+  background: #f4f4f4;
+}
+
+/* 🔴 Not Connected */
+.bc-off {
+  color: #b30000;
+  background: #ffe5e5;
+  border-color: #ffb3b3;
+}
+
+/* 🟢 Connected */
+.bc-on {
+  color: #008800;
+  background: #e4ffe4;
+  border-color: #9aff9a;
+}
+
+/* Adjust header to make space */
+header {
+  position: relative;
+  padding-right: 180px; /* gives space for wallet UI */
+}
+
+/* ============================================
+   🔥 Fix for cards alignment with new header
+   ============================================ */
+.main-content {
+  position: relative;
+}
+
+@media screen and (max-width: 768px) {
+  .bc-ui {
+    position: static;
+    margin-top: 12px;
+  }
+
+  header {
+    padding-right: 0;
+    flex-direction: column;
+    text-align: center;
+  }
+}

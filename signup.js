@@ -1,9 +1,6 @@
 document.getElementById("registerForm").addEventListener("submit", async function (e) {
     e.preventDefault();
 
-    // 🔥 Render backend URL
-    const backendBase = "https://ewallet-backend-2-6ge9.onrender.com";
-
     const fullname = document.getElementById("fullname").value.trim();
     const email = document.getElementById("email").value.trim();
     const username = document.getElementById("username").value.trim();
@@ -22,29 +19,23 @@ document.getElementById("registerForm").addEventListener("submit", async functio
     }
 
     try {
-        const response = await fetch(`${backendBase}/api/user/signup`, {
+        const response = await fetch("http://localhost:8080/api/user/signup", { // ✅ correct endpoint
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ fullname, email, username, password, espMac })
         });
 
-        // Try safe JSON parse
-        let data = {};
-        try {
-            data = await response.json();
-        } catch (err) {
-            console.warn("Non-JSON response:", err);
-        }
+        const data = await response.json();
 
         if (response.ok) {
             alert("Registration successful! Redirecting to login...");
             window.location.href = "login.html";
         } else {
-            alert(data.error || "Registration failed.");
+            // Handle backend errors (username, email, espMac)
+            alert(data.error || "Registration failed: Unknown error occurred.");
         }
-
     } catch (error) {
         console.error("Signup error:", error);
-        alert("Server unreachable. Please try again.\n\nError: " + error.message);
+        alert("Error connecting to server: " + error.message);
     }
 });
