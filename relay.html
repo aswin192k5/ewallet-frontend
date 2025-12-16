@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Relay Control</title>
+  <link rel="stylesheet" href="relay.css">
+</head>
+<body>
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <h2>IoT Dashboard</h2>
+    <ul>
+      <li><a href="dashboard.html">Home</a></li>
+      <li><a href="#">Graphs</a></li>
+      <li><a href="relay.html" class="active">Relay Control</a></li>
+      <li><a href="#">Settings</a></li>
+      <li><a href="#" id="logoutBtn">Logout</a></li>
+    </ul>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <header>
+      <h1>Relay Control</h1>
+    </header>
+
+    <section class="cards">
+      <!-- Relay 1 -->
+      <div class="card">
+        <h3>Relay 1</h3>
+        <label class="switch">
+          <input type="checkbox" id="relay1" onchange="toggleRelay(1, this.checked)">
+          <span class="slider"></span>
+        </label>
+      </div>
+
+      <!-- Relay 2 -->
+      <div class="card">
+        <h3>Relay 2</h3>
+        <label class="switch">
+          <input type="checkbox" id="relay2" onchange="toggleRelay(2, this.checked)">
+          <span class="slider"></span>
+        </label>
+      </div>
+    </section>
+  </div>
+
+  <!-- Script -->
+  <script src="relay.js"></script>
+</body>
+</html>

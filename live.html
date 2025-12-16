@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Live Data - IoT Dashboard</title>
+  <link rel="stylesheet" href="dashboard.css" />
+</head>
+<body>
+  <div class="container">
+    <aside class="sidebar">
+      <h2>IoT Panel</h2>
+      <nav>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="live.html" class="active">Live Data</a>
+        <a href="history.html">History</a>
+        <a href="settings.html">Settings</a>
+        <a href="logout.html">Logout</a>
+      </nav>
+    </aside>
+
+    <main class="main-content">
+      <header><h1>Live Device Data</h1></header>
+      <section class="cards">
+        <div class="card"><h3>Current</h3><p id="current">2.1 A</p></div>
+        <div class="card"><h3>Voltage</h3><p id="voltage">230 V</p></div>
+        <div class="card"><h3>Power</h3><p id="power">483 W</p></div>
+        <div class="card"><h3>Energy</h3><p id="energy">0.14 kWh</p></div>
+      </section>
+    </main>
+  </div>
+<p class="signup-link">
+  Don't have an account?
+  <a href="signup.html">Sign Up</a>
+</p>
+
+  <script>
+    setInterval(() => {
+      document.getElementById("current").textContent = (Math.random() * 3).toFixed(2) + " A";
+      document.getElementById("voltage").textContent = (220 + Math.random() * 10).toFixed(0) + " V";
+      document.getElementById("power").textContent = (Math.random() * 500).toFixed(0) + " W";
+      document.getElementById("energy").textContent = (Math.random() * 2).toFixed(2) + " kWh";
+    }, 2000);
+  </script>
+</body>
+</html>

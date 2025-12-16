@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Settings - IoT Dashboard</title>
+  <link rel="stylesheet" href="dashboard.css" />
+</head>
+<body>
+  <div class="container">
+    <aside class="sidebar">
+      <h2>IoT Panel</h2>
+      <nav>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="live.html">Live Data</a>
+        <a href="history.html">History</a>
+        <a href="settings.html" class="active">Settings</a>
+        <a href="logout.html">Logout</a>
+      </nav>
+    </aside>
+
+    <main class="main-content">
+      <header><h1>Device Settings</h1></header>
+      <section class="chart-section">
+        <form>
+          <label>Device Name:</label><br/>
+          <input type="text" value="SmartMeter_001" /><br/><br/>
+
+          <label>Threshold Power Limit (W):</label><br/>
+          <input type="number" value="500" /><br/><br/>
+
+          <label>Alert Email:</label><br/>
+          <input type="email" value="admin@iot.com" /><br/><br/>
+
+          <button type="submit">Save Changes</button>
+        </form>
+      </section>
+    </main>
+  </div>
+
+  <style>
+    form input, form button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 8px;
+      margin-bottom: 20px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+    form button {
+      background-color: #0095f6;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      border: none;
+    }
+    form button:hover {
+      background-color: #007acc;
+    }
+  </style>
+</body>
+</html>
